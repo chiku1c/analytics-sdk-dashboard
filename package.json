@@ -1,0 +1,18 @@
+
+{
+  "name": "analytics-sdk-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c blue,green \"npm run dev --workspace=@analytics/api\" \"npm run dev --workspace=@analytics/web\"",
+    "build": "npm run build --workspace=@analytics/sdk && npm run build --workspace=@analytics/api && npm run build --workspace=@analytics/web",
+    "test": "npm run test --workspace=@analytics/api && npm run test --workspace=@analytics/sdk"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
